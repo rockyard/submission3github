@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">GithubUserSubmission</string>
+    <string name="nulled">Null</string>
+    <string name="nama_user">Nama User</string>
+    <string name="username">Username</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="location">Location : %s</string>
+    <string name="work">Work</string>
+    <string name="repositories">Repository : %s</string>
+    <string name="company">Company : %s </string>
+    <string name="work_at">Work at</string>
+    <string name="separator">Separator</string>
+    <string name="change_language_settings">Language Settings</string>
+    <string name="change_notification_settings">Notification Settings</string>
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="add_favorite">"Added Favorite"</string>
+    <string name="delete_favorite">"Deleted Favorite"</string>
+    <string name="empty_favorite">Empty Data</string>
+    <string name="reminder_setting">Reminder Setting</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="daily_message">Find new favorite user on Github</string>
+</resources>
