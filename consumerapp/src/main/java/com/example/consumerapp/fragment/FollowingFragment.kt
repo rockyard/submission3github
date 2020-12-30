@@ -1,5 +1,6 @@
 package com.example.consumerapp.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -25,7 +26,7 @@ import org.json.JSONObject
 
 class  FollowingFragment : Fragment() {
 
-    companion object{
+    companion object {
         private val TAG = FollowingFragment::class.java.simpleName
         const val EXTRA_DATA = "extra_data"
         const val EXTRA_NOTE = "extra_note"
@@ -38,11 +39,14 @@ class  FollowingFragment : Fragment() {
     private lateinit var dataUsers: DataUsers
 
 
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_following, container, false)
     }
 
+    @SuppressLint("UseRequireInsteadOfGet")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = ListDataFollowingAdapter(listData)
@@ -50,13 +54,14 @@ class  FollowingFragment : Fragment() {
 
         favorites = activity!!.intent.getParcelableExtra(DetailActivity.EXTRA_NOTE)
         if (favorites != null) {
-            dataFavorite = activity!!.intent.getParcelableExtra<Favorite>(FollowersFragment.EXTRA_NOTE) as Favorite
+            dataFavorite = activity!!.intent.getParcelableExtra<Favorite>(EXTRA_NOTE) as Favorite
             getDataGit(dataFavorite.username.toString())
         } else {
             dataUsers = activity!!.intent.getParcelableExtra<DataUsers>(EXTRA_DATA) as DataUsers
             getDataGit(dataUsers.username.toString())
         }
     }
+
     private fun getDataGit(id: String){
         progressBarFollowing.visibility = View.VISIBLE
         val client = AsyncHttpClient()

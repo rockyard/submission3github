@@ -1,6 +1,8 @@
 package com.example.consumerapp.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.service.autofill.UserData
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.consumerapp.DetailActivity
 import com.example.consumerapp.R
 import com.example.consumerapp.adapter.ListDataFollowersAdapter
+import com.example.consumerapp.adapter.ListDataFollowingAdapter
 import com.example.consumerapp.adapter.followersFilterList
 import com.example.consumerapp.data.DataUsers
 import com.example.consumerapp.data.Favorite
@@ -37,12 +40,15 @@ class FollowersFragment : Fragment() {
     private lateinit var dataUsers: DataUsers
 
 
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_followers, container, false)
     }
 
+    @SuppressLint("UseRequireInsteadOfGet")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = ListDataFollowersAdapter(listData)
@@ -52,11 +58,10 @@ class FollowersFragment : Fragment() {
         if (favorites != null) {
             dataFavorite = activity!!.intent.getParcelableExtra<Favorite>(EXTRA_NOTE) as Favorite
             getDataGit(dataFavorite.username.toString())
-        }else {
+        } else {
             dataUsers = activity!!.intent.getParcelableExtra<DataUsers>(EXTRA_DATA) as DataUsers
             getDataGit(dataUsers.username.toString())
         }
-
     }
 
     private fun getDataGit (id: String){
