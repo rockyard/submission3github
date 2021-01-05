@@ -27,14 +27,16 @@ class ListDataFollowersAdapter (listData: ArrayList<DataUsers>) :
         var imageAvatar: CircleImageView = itemView.avatar
         var name: TextView = itemView.user_name
         var username : TextView = itemView.username
-        var followers: TextView = itemView.followers
-        var following: TextView = itemView.following
+        var company : TextView = itemView.tv_company
+        var location : TextView = itemView.tv_location
     }
+
     private var onItemClickCallback: OnItemClickCallback? = null
 
     fun setOnItemClickCallback (onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
+
     interface OnItemClickCallback {
         fun onItemClicked (DataUsers: DataUsers)
     }
@@ -59,10 +61,10 @@ class ListDataFollowersAdapter (listData: ArrayList<DataUsers>) :
             .into(holder.imageAvatar)
         holder.name.text = data.name
         holder.username.text = data.username
-        holder.followers.text = data.followers.toString().trim()
-        holder.following.text = data.following.toString().trim()
+        holder.company.text = data.company
+        holder.location.text = data.location
         holder.itemView.setOnClickListener{
-            //
+
         }
     }
 }

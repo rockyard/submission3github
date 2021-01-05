@@ -1,9 +1,13 @@
 package com.example.consumerapp
 
+import android.content.Intent
 import android.database.ContentObserver
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
+import android.provider.Settings
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -57,14 +61,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setActionBarTitle() {
         if (supportActionBar != null) {
             supportActionBar?.title = "Favorite Users"
         }
     }
 
-    // get data and set it to adapter from SQLite database
     private fun loadNotesAsync() {
         GlobalScope.launch(Dispatchers.Main) {
             progressBarFav.visibility = View.VISIBLE
@@ -72,7 +74,6 @@ class MainActivity : AppCompatActivity() {
                 val cursor = contentResolver?.query(CONTENT_URI, null, null, null, null)
                 MappingHelper.mapCursorToArrayList(cursor)
             }
-
             val favData = deferredNotes.await()
             progressBarFav.visibility = View.INVISIBLE
             if (favData.size > 0) {
@@ -97,5 +98,23 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         loadNotesAsync()
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_change_settings -> {
+                val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+                startActivity(mIntent)
+            }
+            R.id.action_change_notification -> {
+                val mIntent = Intent(this, NotificationSettings::class.java)
+                startActivity(mIntent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

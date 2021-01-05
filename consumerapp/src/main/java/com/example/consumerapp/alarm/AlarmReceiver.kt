@@ -15,15 +15,9 @@ class AlarmReceiver : BroadcastReceiver() {
 
     companion object {
         const val TYPE_DAILY = "Daily Reminder"
-        const val EXTRA_MESSAGE = "message"
-        const val EXTRA_TYPE = "type"
-
-        private const val DATE_FORMAT = "yyyy-MM-dd"
-        private const val TIME_FORMAT = "HH:mm"
-
 
         private const val ID_DAILY = 100
-        private const val TIME_DAILY = "9" // set the alarm time here
+        private const val TIME_DAILY = "09:00"
     }
 
     override fun onReceive(context: Context, intent: Intent) {
@@ -33,8 +27,6 @@ class AlarmReceiver : BroadcastReceiver() {
 
     fun setDailyReminder(context: Context, type: String, time: String) {
 
-       //if (isDateInvalid(time, TIME_FORMAT)) return
-
         val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent : PendingIntent = Intent(context, AlarmReceiver::class.java) .let {
             PendingIntent.getBroadcast(
@@ -42,10 +34,6 @@ class AlarmReceiver : BroadcastReceiver() {
                     ID_DAILY, it, 0
             )
         }
-
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        //intent.putExtra(EXTRA_MESSAGE, message)
-        //intent.putExtra(EXTRA_TYPE, type)
 
         val timeArray =
             TIME_DAILY.split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()

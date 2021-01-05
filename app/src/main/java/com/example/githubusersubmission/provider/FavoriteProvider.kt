@@ -43,8 +43,8 @@ class FavoriteProvider : ContentProvider(){
             s1: String?
     ): Cursor? {
         return when (sUriMatcher.match(uri)) {
-            FAV -> favHelper.queryAll() // get all data
-            FAV_ID -> favHelper.queryById(uri.lastPathSegment.toString()) // get data by id
+            FAV -> favHelper.queryAll()
+            FAV_ID -> favHelper.queryById(uri.lastPathSegment.toString())
             else -> null
         }
     }

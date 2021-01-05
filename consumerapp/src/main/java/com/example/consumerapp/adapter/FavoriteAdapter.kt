@@ -26,6 +26,7 @@ class FavoriteAdapter (private val activity: Activity) :
 
             notifyDataSetChanged()
         }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_row_git, parent, false)
         return NoteViewHolder(view)
@@ -48,8 +49,6 @@ class FavoriteAdapter (private val activity: Activity) :
                 user_name.text = fav.name
                 tv_company.text = fav.company.toString().trim()
                 tv_location.text = fav.location.toString().trim()
-                followers.text = fav.followers.toString().trim()
-                following.text = fav.following.toString().trim()
                 itemView.setOnClickListener(
                         CustomOnItemClickListener(
                                 adapterPosition,

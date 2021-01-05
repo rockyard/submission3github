@@ -3,7 +3,7 @@
     package="com.example.githubusersubmission">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <permission 
+    <permission
         android:name="com.example.githubusersubmission.READ_DATABASE"
         android:protectionLevel="normal"/>
     <permission android:name="com.example.githubusersubmission.WRITE_DATABASE"

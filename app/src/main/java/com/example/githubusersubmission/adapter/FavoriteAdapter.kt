@@ -48,8 +48,6 @@ class FavoriteAdapter (private val activity: Activity) :
                 user_name.text = fav.name
                 tv_company.text = fav.company.toString().trim()
                 tv_location.text = fav.location.toString().trim()
-                followers.text = fav.followers.toString().trim()
-                following.text = fav.following.toString().trim()
                 itemView.setOnClickListener(
                         CustomOnItemClickListener(
                                 adapterPosition,

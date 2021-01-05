@@ -80,8 +80,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         detail_company.text = getString(R.string.company, dataUser.company)
         detail_location.text = getString(R.string.location, dataUser.location)
         detail_repo.text = getString(R.string.repositories, dataUser.repository)
-        followerss.text = dataUser.followers.toString()
-        followings.text = dataUser.following.toString()
         Glide.with(this)
                 .load(dataUser.avatar)
                 .into(avatars)
@@ -96,8 +94,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         detail_company.text = favoriteUser.company
         detail_location.text = favoriteUser.location
         detail_repo.text = favoriteUser.repository
-        followerss.text = favoriteUser.followers
-        followings.text = favoriteUser.following
         Glide.with(this)
                 .load(favoriteUser.avatar)
                 .into(avatars)

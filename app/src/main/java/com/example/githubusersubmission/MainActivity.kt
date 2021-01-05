@@ -3,7 +3,6 @@ package com.example.githubusersubmission
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.service.autofill.UserData
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem

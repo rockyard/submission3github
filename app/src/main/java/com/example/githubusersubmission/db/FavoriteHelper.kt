@@ -21,20 +21,17 @@ class FavoriteHelper(context: Context) {
         }
     }
 
-    // get access to write database
     @Throws(SQLException::class)
     fun open() {
         database = dataBaseHelper.writableDatabase
     }
 
-    // close the database connection
     fun close() {
         dataBaseHelper.close()
         if (database.isOpen)
             database.close()
     }
 
-    //get all data in database
     fun queryAll(): Cursor {
         return database.query(
             DATABASE_TABLE,
@@ -47,7 +44,6 @@ class FavoriteHelper(context: Context) {
         )
     }
 
-    // get data by id
     fun queryById(id: String): Cursor {
         return database.query(
             DATABASE_TABLE,
@@ -61,17 +57,14 @@ class FavoriteHelper(context: Context) {
         )
     }
 
-    // like the name is for insert data to database
     fun insert (values: ContentValues?): Long {
         return database.insert(DATABASE_TABLE, null, values)
     }
 
-    // this for update data
     fun update(id: String, values: ContentValues?): Int {
         return database.update(DATABASE_TABLE, values, "$USERNAME = ?", arrayOf(id))
     }
 
-    // and this for delete
     fun deleteById(id: String): Int {
         return database.delete(DATABASE_TABLE, "$USERNAME = '$id'", null)
     }

@@ -54,8 +54,6 @@ class DetailActivity : AppCompatActivity(){
         detail_company.text = favoriteUser.company
         detail_location.text = favoriteUser.location
         detail_repo.text = favoriteUser.repository
-        followerss.text = favoriteUser.followers
-        followings.text = favoriteUser.following
         Glide.with(this)
                 .load(favoriteUser.avatar)
                 .into(avatars)

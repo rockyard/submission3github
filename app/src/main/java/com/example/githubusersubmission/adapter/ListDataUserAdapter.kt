@@ -38,15 +38,14 @@ class ListDataUserAdapter(private var listData: ArrayList<DataUsers>):
         var username : TextView = itemView.username
         var company: TextView = itemView.tv_company
         var location : TextView = itemView.tv_location
-        var followers : TextView = itemView.followers
-        var following: TextView = itemView.following
-
     }
+
    private lateinit var onItemClickCallback : OnItemClickCallback
 
    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
+
     interface OnItemClickCallback {
         fun onItemClicked(dataUsers: DataUsers)
     }
@@ -69,8 +68,6 @@ class ListDataUserAdapter(private var listData: ArrayList<DataUsers>):
         holder.username.text = data.username
         holder.company.text = data.company.toString().trim()
         holder.location.text = data.location.toString().trim()
-        holder.followers.text = data.followers.toString().trim()
-        holder.following.text = data.following.toString().trim()
         holder.itemView.setOnClickListener {
             val dataUser = DataUsers(
                     data.username,

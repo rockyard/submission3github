@@ -37,9 +37,8 @@ class FollowersFragment : Fragment() {
     private lateinit var dataUsers: DataUsers
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         return inflater.inflate(R.layout.fragment_followers, container, false)
     }
 
@@ -56,7 +55,6 @@ class FollowersFragment : Fragment() {
             dataUsers = activity!!.intent.getParcelableExtra<DataUsers>(EXTRA_DATA) as DataUsers
             getDataGit(dataUsers.username.toString())
         }
-
     }
 
     private fun getDataGit (id: String){
@@ -82,7 +80,6 @@ class FollowersFragment : Fragment() {
                     e.printStackTrace()
                 }
             }
-
             override fun onFailure(statusCode: Int, headers: Array<out Header>, responseBody: ByteArray, error: Throwable) {
                 progressBarFollowers.visibility = View.INVISIBLE
                 val errorMessage = when(statusCode) {
@@ -95,6 +92,7 @@ class FollowersFragment : Fragment() {
             }
         })
     }
+
     private fun getDataGitDetail (id: String){
         progressBarFollowers.visibility = View.VISIBLE
         val client = AsyncHttpClient()
@@ -147,6 +145,7 @@ class FollowersFragment : Fragment() {
             }
         })
     }
+
     private fun showRecyclerList() {
         recycleViewFollowers.layoutManager = LinearLayoutManager(activity)
         val listDataAdapter = ListDataFollowersAdapter(followersFilterList)

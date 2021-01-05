@@ -39,8 +39,6 @@ class  FollowingFragment : Fragment() {
     private lateinit var dataUsers: DataUsers
 
 
-
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_following, container, false)
@@ -97,6 +95,7 @@ class  FollowingFragment : Fragment() {
             }
         })
     }
+
     private fun getDataGitDetail (id: String){
         progressBarFollowing.visibility = View.VISIBLE
         val client = AsyncHttpClient()
@@ -148,6 +147,7 @@ class  FollowingFragment : Fragment() {
             }
         })
     }
+
     private fun showRecyclerList() {
         recycleViewFollowing.layoutManager = LinearLayoutManager(activity)
         val listDataAdapter =
@@ -161,5 +161,4 @@ class  FollowingFragment : Fragment() {
             }
         })
     }
-
 }
